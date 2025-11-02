@@ -3,7 +3,7 @@
     {
       "name": "Smart Gameboard for DnD",
       "shortDescription": "A modular smart gameboard that digitally tracks physical piece movements and synchronizes them online, enabling local and remote players to participate in the same game.",
-      "tags": ["IoT", "Fullstack", "Java", "Angular"],
+      "tags": ["Semester-Project", "IoT", "Fullstack", "Java", "Angular"],
       "techStack": [
         "Java",
         "Docker",
@@ -22,9 +22,9 @@
       ]
     },
     {
-      "name": "Unify",
+      "name": "Unify App Project",
       "shortDescription": "A mobile app designed to improve communication between students and professors in large lectures, built with Kotlin and Firebase.",
-      "tags": ["Mobile"],
+      "tags": ["Mobile", "Semester-Project"],
       "techStack": ["Kotlin", "Android Studio", "Firebase", "Figma"],
       "contributions": [
         "Figma Prototype",

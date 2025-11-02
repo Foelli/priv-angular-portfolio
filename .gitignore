@@ -43,3 +43,5 @@ Thumbs.db
 
 # Local deployment script
 deploy.sh
+
+projects.json
