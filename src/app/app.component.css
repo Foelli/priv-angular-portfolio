@@ -1,35 +1,43 @@
-/* === Fixierter Back-to-Top Button === */
 .back-to-top {
-  position: sticky;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  width: 3rem;
-  height: 3rem;
+  position: fixed;
+  right: 4rem;
+  bottom: 5rem;
   border: none;
-  border-radius: 9999px;
-  display: grid;
-  place-items: center;
+  background: transparent;
+  padding: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 2147483647;
-
-  background: var(--accent, #00c7e6);
-  color: var(--bg-dark, #0b0e18);
-  box-shadow:
-    0 10px 20px rgba(0, 0, 0, 0.25),
-    0 0 0 2px rgba(255, 255, 255, 0.08) inset;
-
-  transition: filter 0.2s, transform 0.2s;
-
-  svg path {
-    fill: currentColor;
-  }
+  transition: transform 0.2s, opacity 0.2s;
+  color: var(--accent);
 }
 
 .back-to-top:hover {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  opacity: 0.9;
 }
 
 .back-to-top:active {
   transform: translateY(0);
+}
+
+.back-to-top img,
+.back-to-top svg {
+  width: 64px;
+  height: 64px;
+}
+
+/* Entferne den Filter komplett */
+.back-to-top img {
+  filter: none;
+}
+
+.back-to-top {
+  color: var(--accent);
+}
+
+.back-to-top svg polygon {
+  fill: currentColor;
 }

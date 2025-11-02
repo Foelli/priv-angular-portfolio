@@ -5,15 +5,30 @@
   --bg-dark: #0b0e18;
   --text-light: #e7f0ff;
   --accent: #00c7e6;
-  /* NEU: Höhe des fixen Headers */
+
   --header-h: 64px;
+
+  /* CRT Effekt Parameter */
+  --crt-scanline-opacity: .35;
+  /* horizontale Scanlines */
+  --crt-vignette: .7;
+  /* Vignette (0–1)       */
+  --crt-noise: .05;
+  /* Noise-Schleier       */
+  --crt-contrast: 1.05;
+  /* globaler Kontrast    */
+  --crt-saturate: 1.1;
+  /* globale Sättigung    */
 }
 
+/* ------------------ Global Base ------------------ */
 html,
 body {
   margin: 0;
   padding: 0;
   min-height: 100%;
+  height: 100%;
+  overscroll-behavior: none;
   background: var(--bg-dark);
   color: var(--text-light);
   font-family: var(--font-pixel);
@@ -36,56 +51,20 @@ a:hover {
   text-underline-offset: 2px;
 }
 
-/* Smooth scrolling for all pages */
-html {
-  scroll-behavior: smooth;
+body {
+  background-color: var(--bg-dark);
 }
 
-/* Optional: Grund-Variables */
-:root {
-  --crt-scanline-opacity: .35;
-  /* Stärke der horizontalen Scanlines */
-  --crt-vignette: .7;
-  /* Stärke der Vignette (0–1) */
-  --crt-noise: .05;
-  /* Rausch-Schleier (0–0.15 ist gut) */
-  --crt-contrast: 1.05;
-  /* globaler Kontrast */
-  --crt-saturate: 1.1;
-  /* globale Sättigung */
+app-root {
+  min-height: 100dvh;
 }
 
-/* Global etwas „TV-Look“ geben – NICHT auf app-root anwenden */
-body,
-:root {
-  filter: saturate(var(--crt-saturate)) contrast(var(--crt-contrast));
+main.content {
+  padding-top: var(--header-h);
 }
 
-/* LAYER 1: Scanlines + leichte vertikale Linien (aperture grille) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2147483646;
-  background:
-    repeating-linear-gradient(0deg,
-      rgba(255, 255, 255, 0.04) 0px,
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 2px,
-      transparent 3px),
-    repeating-linear-gradient(90deg,
-      rgba(255, 255, 255, 0.012) 0px,
-      rgba(255, 255, 255, 0.012) 1px,
-      transparent 2px,
-      transparent 3px);
-  mix-blend-mode: overlay;
-  opacity: var(--crt-scanline-opacity);
-  will-change: transform, opacity;
-  animation: crt-scan-move 6s linear infinite, crt-flicker 2.8s steps(12, end) infinite;
-}
 
-/* LAYER 2: Vignette + leichte Bildschirmwölbung & Noise-Schleier */
+
 body::after {
   content: "";
   position: fixed;
@@ -93,6 +72,7 @@ body::after {
   /* kleiner Overscan */
   pointer-events: none;
   z-index: 2147483645;
+  /* unter ::before und Button */
   background:
     radial-gradient(ellipse 120% 100% at 50% 50%,
       rgba(0, 0, 0, 0) 60%,
@@ -111,7 +91,7 @@ body::after {
     inset 0 0 180px rgba(0, 0, 0, 0.35);
 }
 
-/* Chromatic Aberration (sehr dezent) auf Text */
+/* Dezente chromatische Aberration – NICHT via filter */
 * {
   text-shadow:
     0 0 0 rgba(0, 0, 0, 0),
@@ -122,7 +102,7 @@ body::after {
   /* C */
 }
 
-/* Animationen */
+/* ------------------ CRT Animations ------------------ */
 @keyframes crt-scan-move {
   0% {
     background-position: 0 0, 0 0;
@@ -131,8 +111,6 @@ body::after {
   100% {
     background-position: 0 3px, 0 0;
   }
-
-  /* leichtes „Scrollen“ der Scanlines */
 }
 
 @keyframes crt-flicker {
@@ -181,34 +159,12 @@ body::after {
   }
 }
 
-/* Barrierefreiheit: Animationen reduzieren/deaktivieren */
 @media (prefers-reduced-motion: reduce) {
   body::before {
     animation: none;
   }
 }
 
-/* --- Bounce / Rubber-band auf iOS & Co. deaktivieren --- */
-
-html,
-body {
-  height: 100%;
-  overscroll-behavior: none;
+.crt-wrap {
+  filter: saturate(var(--crt-saturate)) contrast(var(--crt-contrast));
 }
-
-body {
-  background-color: var(--bg-dark);
-}
-
-/* ⬇️ WICHTIG: Body soll scrollen, nicht app-root */
-app-root {
-  min-height: 100dvh;
-  /* kein overflow hier */
-}
-
-/* Abstand für den fixen Header */
-main.content {
-  padding-top: var(--header-h);
-}
-
-

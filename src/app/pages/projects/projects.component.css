@@ -1,0 +1,175 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  color: #e7f0ff;
+
+  background:
+    repeating-linear-gradient(0deg, #0e1220 0 27px, #0f1423 27px 28px),
+    repeating-linear-gradient(90deg, #0e1220 0 27px, #0f1423 27px 28px),
+    #0a0b10;
+
+  image-rendering: pixelated;
+  padding: 32px 16px;
+}
+
+.projects {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header */
+.projects-header {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.projects-header h1 {
+  font-family: 'VT323', monospace;
+  font-size: 36px;
+  /* minimal kleiner = weniger Layout-Jitter */
+  margin: 0;
+  letter-spacing: .3px;
+}
+
+/* Toolbar */
+.toolbar {
+  display: grid;
+  gap: 10px;
+}
+
+.search {
+  width: 100%;
+  max-width: 520px;
+  padding: 10px 12px;
+  font: 16px/1.2 'VT323', monospace;
+  color: #e7f0ff;
+  background: #0e1220;
+  border: 1px solid #1c243d;
+  border-radius: 10px;
+  outline: none;
+}
+
+.search::placeholder {
+  color: #94a3b8;
+}
+
+.search:focus {
+  border-color: #00c7e6;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  font: 16px/1 'VT323', monospace;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid #1c243d;
+  background: #0e1220;
+  color: #e7f0ff;
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: #00c7e6;
+}
+
+.chip.active {
+  background: #051420;
+  border-color: #00c7e6;
+}
+
+/* Grid & Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+.card {
+  grid-column: span 12;
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+
+  background: #0e1220;
+  border: 1px solid #1c243d;
+  border-radius: 12px;
+}
+
+@media (min-width: 700px) {
+  .card {
+    grid-column: span 6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    grid-column: span 4;
+  }
+}
+
+.card-title {
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  margin: 0;
+}
+
+.card-desc {
+  margin: 0;
+  color: #c8d4f0;
+}
+
+/* Meta */
+.meta {
+  display: grid;
+  gap: 8px;
+}
+
+.meta-group h4 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+  color: #9fb3d9;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.pill {
+  font: 14px/1 'VT323', monospace;
+  padding: 6px 8px;
+  border: 1px solid #1c243d;
+  border-radius: 999px;
+  background: #0b0f1a;
+  color: #d9e4ff;
+}
+
+/* Details */
+.details summary {
+  cursor: pointer;
+  margin-top: 4px;
+  color: #9fb3d9;
+}
+
+.details .list {
+  margin: 8px 0 0 16px;
+}
+
+/* Optional: reduziert Effekte bei wenig Ressourcen */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
