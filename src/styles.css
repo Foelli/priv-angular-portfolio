@@ -1,1 +1,222 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+    --font-pixel: 'VT323', monospace;
+    --bg-dark: #0b0e18;
+    --text-light: #e7f0ff;
+    --accent: #00c7e6;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-pixel);
+    letter-spacing: 0.3px;
+    image-rendering: pixelated;
+}
+
+/* Global links */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Smooth scrolling for all pages */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Optional: Grund-Variables */
+:root {
+    --crt-scanline-opacity: .35;
+    /* Stärke der horizontalen Scanlines */
+    --crt-vignette: .7;
+    /* Stärke der Vignette (0–1) */
+    --crt-noise: .05;
+    /* Rausch-Schleier (0–0.15 ist gut) */
+    --crt-contrast: 1.05;
+    /* globaler Kontrast */
+    --crt-saturate: 1.1;
+    /* globale Sättigung */
+}
+
+/* Global etwas „TV-Look“ geben */
+body,
+app-root,
+:root {
+    filter: saturate(var(--crt-saturate)) contrast(var(--crt-contrast));
+}
+
+/* LAYER 1: Scanlines + leichte vertikale Linien (aperture grille) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2147483646;
+
+    /* Zwei übereinanderliegende repeating-linear-gradients:
+     1) horizontale Scanlines
+     2) sehr dezente vertikale Linien (Aperture-Grille-Effekt)
+  */
+    background:
+        repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.04) 0px,
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 2px,
+            transparent 3px),
+        repeating-linear-gradient(90deg,
+            rgba(255, 255, 255, 0.012) 0px,
+            rgba(255, 255, 255, 0.012) 1px,
+            transparent 2px,
+            transparent 3px);
+
+    mix-blend-mode: overlay;
+    opacity: var(--crt-scanline-opacity);
+    will-change: transform, opacity;
+    animation: crt-scan-move 6s linear infinite, crt-flicker 2.8s steps(12, end) infinite;
+}
+
+/* LAYER 2: Vignette + leichte Bildschirmwölbung & Noise-Schleier */
+body::after {
+    content: "";
+    position: fixed;
+    inset: -2vw;
+    /* kleiner Overscan */
+    pointer-events: none;
+    z-index: 2147483645;
+
+    /* Vignette + „Curved Screen“ via radial-gradient */
+    background:
+        radial-gradient(ellipse 120% 100% at 50% 50%,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(0, 0, 0, calc(var(--crt-vignette) * 0.25)) 75%,
+            rgba(0, 0, 0, var(--crt-vignette)) 100%),
+        /* feiner Noise-Schleier */
+        repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, var(--crt-noise)) 0px,
+            rgba(255, 255, 255, 0) 1px,
+            rgba(0, 0, 0, var(--crt-noise)) 2px,
+            rgba(0, 0, 0, 0) 3px);
+
+    /* Die Mischung „screen“ lässt die Vignette dunkeln, das Noise bleibt zart */
+    mix-blend-mode: multiply;
+    border-radius: 1.5vw;
+    /* simuliert Bildschirmwölbung */
+    box-shadow:
+        inset 0 0 60px rgba(0, 0, 0, 0.6),
+        inset 0 0 180px rgba(0, 0, 0, 0.35);
+}
+
+/* Chromatic Aberration (sehr dezent) auf Text */
+* {
+    text-shadow:
+        0 0 0 rgba(0, 0, 0, 0),
+        /* Platzhalter */
+        0 0 .01px rgba(255, 0, 80, 0.06),
+        /* R */
+        0 0 .01px rgba(0, 180, 255, 0.06);
+    /* C */
+}
+
+/* Animationen */
+@keyframes crt-scan-move {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 0 3px, 0 0;
+    }
+
+    /* leichtes „Scrollen“ der Scanlines */
+}
+
+/* Unregelmäßiges Flimmern (Opacity jitter) */
+@keyframes crt-flicker {
+    0% {
+        opacity: calc(var(--crt-scanline-opacity) * .95);
+    }
+
+    10% {
+        opacity: calc(var(--crt-scanline-opacity) * 1.05);
+    }
+
+    20% {
+        opacity: calc(var(--crt-scanline-opacity) * .9);
+    }
+
+    30% {
+        opacity: calc(var(--crt-scanline-opacity) * 1.1);
+    }
+
+    40% {
+        opacity: calc(var(--crt-scanline-opacity) * .92);
+    }
+
+    50% {
+        opacity: calc(var(--crt-scanline-opacity) * 1.06);
+    }
+
+    60% {
+        opacity: calc(var(--crt-scanline-opacity) * .94);
+    }
+
+    70% {
+        opacity: calc(var(--crt-scanline-opacity) * 1.08);
+    }
+
+    80% {
+        opacity: calc(var(--crt-scanline-opacity) * .91);
+    }
+
+    90% {
+        opacity: calc(var(--crt-scanline-opacity) * 1.02);
+    }
+
+    100% {
+        opacity: calc(var(--crt-scanline-opacity) * .97);
+    }
+}
+
+/* Barrierefreiheit: Animationen reduzieren/deaktivieren */
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        animation: none;
+    }
+}
+
+/* --- Bounce / Rubber-band auf iOS & Co. deaktivieren --- */
+
+html,
+body {
+    height: 100%;
+    overscroll-behavior: none;
+}
+
+body {
+    background-color: var(--bg-dark);
+    /* falls Browserrand blitzt */
+}
+
+/* 2) Eigenen Scroll-Container nutzen (hier: Angulars <app-root>) */
+app-root {
+    height: 100dvh;
+    /* korrekt mit iOS-URL-Bar */
+    overflow: auto;
+    /* hier wird gescrollt */
+    -webkit-overflow-scrolling: touch;
+    /* flüssiges Momentum-Scrollen */
+    overscroll-behavior-y: contain;
+    /* verhindert “Durchgreifen” zum Body */
+    overscroll-behavior-x: contain;
+}
