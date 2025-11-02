@@ -2,47 +2,57 @@
   display: block;
   color: #e7f0ff;
   image-rendering: pixelated;
+  font-size: 1.15rem;
+  /* +15 % Grundschrift */
+  letter-spacing: 0.5px;
+  /* breiter für bessere Lesbarkeit */
 }
 
 /* Container */
 .about {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 4rem 1.25rem;
+  padding: 4.6rem 1.5rem;
+  /* +15 % */
 }
 
 /* Header */
 .about-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.9rem;
 }
 
 .about-header h2 {
   font-family: 'VT323', monospace;
-  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  font-size: clamp(2.3rem, 3.8vw, 3.45rem);
+  /* +15 % */
   margin: 0;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.6px;
+  color: #e7f0ff;
+  /* explizit, als Referenzstil */
 }
 
 .lead {
-  margin: 0.75rem auto 0;
-  max-width: 56ch;
+  margin: 0.9rem auto 0;
+  max-width: 58ch;
   opacity: 0.9;
   line-height: 1.55;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
+  /* +15 % */
+  letter-spacing: 0.5px;
 }
 
 /* Grid */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 1.4rem;
 }
 
 @media (min-width: 820px) {
   .about-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1.7rem;
   }
 }
 
@@ -51,13 +61,14 @@
   background: #0c0f1c;
   border: 3px solid #c0c0c0;
   border-radius: 0;
-  padding: 1.5rem;
+  padding: 1.45rem;
   color: #e7f0ff;
   box-shadow:
     inset 1px 1px 0 #ffffff,
     inset -1px -1px 0 #404040;
   transition: transform 0.1s, box-shadow 0.15s;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
 }
 
 .card:hover {
@@ -70,15 +81,17 @@
 
 .card h3 {
   margin: 0 0 0.85rem;
-  font-size: 1.55rem;
-  letter-spacing: 0.3px;
+  font-size: 1.6rem;
+  /* +15 % */
+  letter-spacing: 0.6px;
 }
 
 /* Lists */
 .bullets {
   margin: 0.6rem 0 0;
   padding-left: 1.1rem;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
 }
 
 .bullets li {
@@ -96,13 +109,14 @@
 .tag {
   display: inline-block;
   font-family: 'VT323', monospace;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  /* +15 % */
   padding: 0.35rem 0.8rem;
   border-radius: 0;
   border: 2px solid #c0c0c0;
   background: #0c0f1c;
   color: #e7f0ff;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
   box-shadow:
     inset 1px 1px 0 #ffffff,
     inset -1px -1px 0 #404040;
@@ -119,7 +133,7 @@
   color: #00c7e6;
 }
 
-/* === Pixel Skill Bars === */
+/* Pixel Skill Bars */
 .skill-rows {
   display: grid;
   gap: 0.7rem;
@@ -130,7 +144,8 @@
   grid-template-columns: 10rem 1fr;
   align-items: center;
   gap: 0.85rem;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
 }
 
 .skill span {
@@ -163,7 +178,8 @@
   margin: 0.25rem 0 0;
   padding: 0;
   border-left: 1px dashed rgba(231, 240, 255, 0.18);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
 .timeline li {
@@ -195,13 +211,14 @@
 .btn {
   display: inline-block;
   font-family: 'VT323', monospace;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
   padding: 0.65rem 1.1rem;
   border-radius: 12px;
   border: 1px solid rgba(231, 240, 255, 0.15);
   text-decoration: none;
   transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  /* +15 % */
 }
 
 .btn:hover {
@@ -234,7 +251,8 @@
 a {
   color: #00c7e6;
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
 a:hover {

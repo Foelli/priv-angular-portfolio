@@ -9,9 +9,10 @@
     #0a0b10;
 
   image-rendering: pixelated;
-  /* etwas mehr Rand für mehr Luft */
   padding: 48px 24px;
-  /* vorher: 32px 16px */
+  /* mehr Luft */
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
 }
 
 /* Container */
@@ -25,21 +26,29 @@
   display: grid;
   gap: 14px;
   margin-bottom: 28px;
+
+  /* Zentrierung */
+  text-align: center;
+  justify-items: center;
 }
 
 .projects-header h1 {
   font-family: 'VT323', monospace;
-  font-size: 41px;
-  /* vorher 36px → +15 % */
+  font-size: clamp(2.3rem, 3.8vw, 3.45rem);
+  /* wie About */
   margin: 0;
   letter-spacing: 0.6px;
-  /* etwas weiter */
+  color: #e7f0ff;
+  /* wie About */
 }
 
 /* Toolbar */
 .toolbar {
   display: grid;
   gap: 12px;
+
+  /* Zentrierung */
+  justify-items: center;
 }
 
 .search {
@@ -47,13 +56,19 @@
   max-width: 560px;
   padding: 12px 14px;
   font: 18.4px/1.3 'VT323', monospace;
-  /* +15 % */
   letter-spacing: 0.6px;
   color: #e7f0ff;
   background: #0e1220;
-  border: 1px solid #1c243d;
-  border-radius: 10px;
+  border: 3px solid #c0c0c0;
+  border-radius: 0;
+  /* eckig! */
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
   outline: none;
+
+  /* Zentrierung */
+  margin-inline: auto;
 }
 
 .search::placeholder {
@@ -62,27 +77,44 @@
 
 .search:focus {
   border-color: #00c7e6;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040,
+    0 0 0 2px #00c7e6;
 }
 
+/* Tag-Filter Chips */
 .chip-row {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+
+  /* Zentrierung */
+  justify-content: center;
 }
 
 .chip {
   font: 18.4px/1 'VT323', monospace;
   letter-spacing: 0.6px;
   padding: 9px 12px;
-  border-radius: 999px;
-  border: 1px solid #1c243d;
+  border-radius: 0;
+  border: 2px solid #c0c0c0;
   background: #0e1220;
   color: #e7f0ff;
   cursor: pointer;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
+  transition: all 0.12s ease;
 }
 
 .chip:hover {
   border-color: #00c7e6;
+  color: #00c7e6;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040,
+    0 0 0 2px #00c7e6;
 }
 
 .chip.active {
@@ -95,22 +127,36 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 18px;
-  /* etwas mehr Zwischenraum */
 }
 
+/* --- RETRO CARD STYLE --- */
 .card {
   grid-column: span 12;
   display: grid;
   gap: 10px;
   padding: 18px;
-  /* mehr Innenabstand */
   font-size: 1.15rem;
-  /* Grundschrift leicht größer */
   letter-spacing: 0.5px;
 
-  background: #0e1220;
-  border: 1px solid #1c243d;
-  border-radius: 12px;
+  background: #0c0f1c;
+  color: #e7f0ff;
+
+  border: 3px solid #c0c0c0;
+  border-radius: 0;
+  /* eckig */
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
+
+  transition: transform 0.1s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040,
+    0 0 0 2px #00c7e6;
 }
 
 @media (min-width: 700px) {
@@ -128,7 +174,6 @@
 .card-title {
   font-family: 'VT323', monospace;
   font-size: 25.3px;
-  /* +15 % */
   letter-spacing: 0.6px;
   margin: 0;
 }
@@ -149,7 +194,6 @@
 .meta-group h4 {
   margin: 0 0 8px 0;
   font-size: 18.4px;
-  /* +15 % */
   color: #9fb3d9;
   letter-spacing: 0.5px;
 }
@@ -165,13 +209,25 @@
 
 .pill {
   font: 16.1px/1 'VT323', monospace;
-  /* +15 % */
   letter-spacing: 0.5px;
   padding: 7px 9px;
-  border: 1px solid #1c243d;
-  border-radius: 999px;
+  border: 2px solid #c0c0c0;
+  border-radius: 0;
   background: #0b0f1a;
   color: #d9e4ff;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
+  transition: all 0.12s ease;
+}
+
+.pill:hover {
+  color: #00c7e6;
+  border-color: #00c7e6;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040,
+    0 0 0 2px #00c7e6;
 }
 
 /* Details */
@@ -189,6 +245,7 @@
   letter-spacing: 0.4px;
 }
 
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
