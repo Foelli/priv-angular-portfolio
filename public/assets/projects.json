@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "name": "Smart DnD Gameboard",
+      "shortDescription": "Ein vernetztes, LED-basiertes Gameboard für D&D mit Live-Zonen, Fog-of-War und Companion-Webapp.",
+      "tags": ["IoT", "LED", "Realtime", "Maker"],
+      "techStack": [
+        "TypeScript",
+        "Node.js",
+        "WebSocket",
+        "ESP32",
+        "WS2812B",
+        "Angular"
+      ],
+      "contributions": [
+        "PCB-Layout & Stromversorgungs-Konzept",
+        "Firmware für LED-Matrix (ESP-IDF/Arduino)",
+        "Realtime-Sync zwischen Board und Webapp via WebSocket",
+        "Web-UI für Szenen, Effekte und Fog-of-War",
+        "Deployment-Setup & OTA-Updates"
+      ]
+    },
+    {
+      "name": "Unify",
+      "shortDescription": "Kleine Productivity-Suite: Notizen, Tasks und Bookmarks mit einheitlicher Suche.",
+      "tags": ["Productivity", "Fullstack", "PWA"],
+      "techStack": [
+        "Angular",
+        "Nx",
+        "Tailwind",
+        "NestJS",
+        "PostgreSQL",
+        "Prisma",
+        "Docker"
+      ],
+      "contributions": [
+        "Domänenmodell & DB-Schema (PostgreSQL/Prisma)",
+        "API-Design (REST) und Auth (JWT)",
+        "Offline-first PWA mit IndexedDB Sync",
+        "Komponentenbibliothek & UI-Theming",
+        "CI-Pipeline (Build/Test/Lint) mit Docker"
+      ]
+    },
+    {
+      "name": "Portfolio",
+      "shortDescription": "Dieses Portfolio mit Retro-Webcore-Design, Projektsuche und Tag-Filter.",
+      "tags": ["Frontend", "Design", "Retro"],
+      "techStack": ["Angular", "TypeScript", "SCSS", "Azure", "Apache"],
+      "contributions": [
+        "Layout, Typografie & Webcore-Look",
+        "Projects-Modul mit JSON-Datenquelle",
+        "Suche & Tag-Chips mit Live-Filter",
+        "Routing & Sticky Header",
+        "Deployment auf Azure VM mit Apache"
+      ]
+    }
+  ]
+}

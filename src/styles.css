@@ -9,19 +9,18 @@
   --header-h: 64px;
 
   /* CRT Effekt Parameter */
-  --crt-scanline-opacity: .35;
-  /* horizontale Scanlines */
+  --crt-scanline-opacity: .4;
   --crt-vignette: .7;
-  /* Vignette (0–1)       */
   --crt-noise: .05;
-  /* Noise-Schleier       */
   --crt-contrast: 1.05;
-  /* globaler Kontrast    */
-  --crt-saturate: 1.1;
-  /* globale Sättigung    */
+  --crt-saturate: 1.0;
+
+  --crt-scanline-size: 4px;
+  --crt-scanline-gap: 2px;
+  --crt-scanline-tint: rgba(0, 0, 0, 0.142);
+  --crt-scanline-tint-hi: rgba(255, 255, 255, 0.05);
 }
 
-/* ------------------ Global Base ------------------ */
 html,
 body {
   margin: 0;
@@ -32,7 +31,7 @@ body {
   background: var(--bg-dark);
   color: var(--text-light);
   font-family: var(--font-pixel);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.6px;
   image-rendering: pixelated;
 }
 
@@ -40,7 +39,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Global links */
 a {
   color: var(--accent);
   text-decoration: none;
@@ -63,8 +61,46 @@ main.content {
   padding-top: var(--header-h);
 }
 
+/* ------------------ Gemeinsamer Hintergrund ------------------ */
+.app-surface {
+  min-height: 100dvh;
+  background:
+    repeating-linear-gradient(0deg, #0e1220 0 27px, #0f1423 27px 28px),
+    repeating-linear-gradient(90deg, #0e1220 0 27px, #0f1423 27px 28px),
+    #0a0b10;
+  image-rendering: pixelated;
+  background-attachment: fixed;
+}
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483640;
+  /* unter body::after lassen */
+  opacity: var(--crt-scanline-opacity);
+  mix-blend-mode: multiply;
 
+  background:
+    /* dunkle Hauptlinien */
+    repeating-linear-gradient(to bottom,
+      var(--crt-scanline-tint) 0,
+      var(--crt-scanline-tint) var(--crt-scanline-size),
+      transparent calc(var(--crt-scanline-size) + var(--crt-scanline-gap))),
+    /* helle feine Linie für „Phosphor“-Effekt */
+    repeating-linear-gradient(to bottom,
+      var(--crt-scanline-tint-hi) 0,
+      var(--crt-scanline-tint-hi) calc(var(--crt-scanline-size) * 0.4),
+      transparent calc(var(--crt-scanline-size) + var(--crt-scanline-gap)));
+
+  /* Bewegung & Flackern */
+  animation:
+    crt-scan-move 2s linear infinite,
+    crt-flicker 5s steps(60) infinite;
+}
+
+/* ------------------ CRT Overlay ------------------ */
 body::after {
   content: "";
   position: fixed;
@@ -91,18 +127,16 @@ body::after {
     inset 0 0 180px rgba(0, 0, 0, 0.35);
 }
 
-/* Dezente chromatische Aberration – NICHT via filter */
+/* Dezente chromatische Aberration */
 * {
   text-shadow:
     0 0 0 rgba(0, 0, 0, 0),
-    /* Platzhalter */
     0 0 .01px rgba(255, 0, 80, 0.06),
     /* R */
     0 0 .01px rgba(0, 180, 255, 0.06);
   /* C */
 }
 
-/* ------------------ CRT Animations ------------------ */
 @keyframes crt-scan-move {
   0% {
     background-position: 0 0, 0 0;

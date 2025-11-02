@@ -19,7 +19,7 @@
 
 .about-header h2 {
   font-family: 'VT323', monospace;
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   margin: 0;
   letter-spacing: 0.3px;
 }
@@ -28,7 +28,8 @@
   margin: 0.75rem auto 0;
   max-width: 56ch;
   opacity: 0.9;
-  line-height: 1.45;
+  line-height: 1.55;
+  font-size: 1.15rem;
 }
 
 /* Grid */
@@ -45,93 +46,115 @@
   }
 }
 
-/* Card */
+/* Card — match featured/project-card style */
 .card {
-  background: rgba(11, 14, 24, 0.6);
-  /* #0b0e18 mit leichter Transparenz */
-  border: 1px solid rgba(231, 240, 255, 0.08);
-  border-radius: 14px;
-  padding: 1.25rem;
+  background: #0c0f1c;
+  border: 3px solid #c0c0c0;
+  border-radius: 0;
+  padding: 1.5rem;
+  color: #e7f0ff;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.04) inset,
-    0 12px 24px rgba(0, 0, 0, 0.35);
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
+  transition: transform 0.1s, box-shadow 0.15s;
+  font-size: 1.05rem;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040,
+    0 0 0 2px #00c7e6;
 }
 
 .card h3 {
-  margin: 0 0 0.75rem;
-  font-size: 1.4rem;
+  margin: 0 0 0.85rem;
+  font-size: 1.55rem;
   letter-spacing: 0.3px;
 }
 
 /* Lists */
 .bullets {
-  margin: 0.5rem 0 0;
+  margin: 0.6rem 0 0;
   padding-left: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .bullets li {
-  margin: 0.3rem 0;
+  margin: 0.35rem 0;
 }
 
 /* Tags */
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.5rem 0 1rem;
+  gap: 0.6rem;
+  margin: 0.6rem 0 1rem;
 }
 
 .tag {
   display: inline-block;
   font-family: 'VT323', monospace;
-  font-size: 0.95rem;
-  padding: 0.25rem 0.55rem;
-  border-radius: 999px;
-  border: 1px dashed rgba(231, 240, 255, 0.25);
-  background: rgba(14, 18, 32, 0.7);
-  white-space: nowrap;
+  font-size: 1.05rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 0;
+  border: 2px solid #c0c0c0;
+  background: #0c0f1c;
+  color: #e7f0ff;
+  letter-spacing: 0.3px;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
+  transition: all 0.1s ease;
+  cursor: default;
 }
 
-/* Skills with progress */
+.tag:hover {
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040,
+    0 0 0 2px #00c7e6;
+  border-color: #00c7e6;
+  color: #00c7e6;
+}
+
+/* === Pixel Skill Bars === */
 .skill-rows {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.7rem;
 }
 
 .skill {
   display: grid;
-  grid-template-columns: 9rem 1fr;
+  grid-template-columns: 10rem 1fr;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
+  font-size: 1.05rem;
 }
 
 .skill span {
   opacity: 0.95;
 }
 
-progress {
-  width: 100%;
+.pixel-bar {
+  display: flex;
+  gap: 3px;
+}
+
+.pixel-block {
+  width: 10px;
   height: 10px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: rgba(231, 240, 255, 0.1);
-  border: 1px solid rgba(231, 240, 255, 0.1);
-  border-radius: 999px;
+  background: #1c243d;
+  border: 1px solid #0e1220;
 }
 
-progress::-webkit-progress-bar {
-  background: transparent;
-}
-
-progress::-webkit-progress-value {
+.pixel-block.active {
   background: #00c7e6;
-  /* Akzent */
-  border-radius: 999px;
-}
-
-progress::-moz-progress-bar {
-  background: #00c7e6;
-  border-radius: 999px;
+  border-color: #00eaff;
+  box-shadow:
+    0 0 6px rgba(0, 199, 230, 0.35),
+    0 0 0 1px rgba(0, 199, 230, 0.25) inset;
 }
 
 /* Timeline */
@@ -140,41 +163,45 @@ progress::-moz-progress-bar {
   margin: 0.25rem 0 0;
   padding: 0;
   border-left: 1px dashed rgba(231, 240, 255, 0.18);
+  font-size: 1.05rem;
 }
 
 .timeline li {
   position: relative;
   margin: 0;
-  padding: 0.75rem 0 0.75rem 1rem;
+  padding: 0.85rem 0 0.85rem 1.1rem;
 }
 
 .timeline .dot {
   position: absolute;
-  left: -6px;
+  left: -7px;
   top: 1rem;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background: #00c7e6;
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(0, 199, 230, 0.15);
+  box-shadow:
+    0 0 0 2px rgba(0, 199, 230, 0.22),
+    0 0 8px rgba(0, 199, 230, 0.35);
 }
 
 .time-content .meta {
   display: block;
-  font-size: 0.95rem;
+  font-size: 1rem;
   opacity: 0.8;
-  margin: 0.1rem 0 0.35rem;
+  margin: 0.1rem 0 0.45rem;
 }
 
+/* Buttons */
 .btn {
   display: inline-block;
   font-family: 'VT323', monospace;
   letter-spacing: 0.3px;
-  padding: 0.55rem 0.9rem;
+  padding: 0.65rem 1.1rem;
   border-radius: 12px;
   border: 1px solid rgba(231, 240, 255, 0.15);
   text-decoration: none;
   transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-size: 1.1rem;
 }
 
 .btn:hover {
@@ -200,13 +227,14 @@ progress::-moz-progress-bar {
 .cta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 0.75rem;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
 }
 
 a {
   color: #00c7e6;
   text-decoration: none;
+  font-size: 1.05rem;
 }
 
 a:hover {

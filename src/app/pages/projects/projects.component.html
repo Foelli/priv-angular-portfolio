@@ -1,48 +1,52 @@
-<section class="projects">
-  <header class="projects-header">
-    <h1>Projects</h1>
+<header class="projects-header">
+  <h1>Projects</h1>
 
-    <div class="toolbar">
-      <input type="search" class="search" placeholder="Suche nach Name/Tag/Tech …" [(ngModel)]="query" />
+  <div class="toolbar">
+    <input type="search" class="search" placeholder="Suche nach Name/Tag/Tech …" [(ngModel)]="query"
+      (ngModelChange)="applyFilters()" />
 
-      <div class="chip-row" *ngIf="allTags?.length">
-        <button class="chip" [class.active]="activeTag === null" (click)="setActiveTag(null)">
-          Alle
-        </button>
-        <button class="chip" *ngFor="let tag of allTags" [class.active]="activeTag === tag" (click)="setActiveTag(tag)">
-          {{ tag }}
-        </button>
+    <div class="chip-row" *ngIf="allTags?.length">
+      <button class="chip" [class.active]="activeTag === null" (click)="setActiveTag(null)">
+        Alle
+      </button>
+      <button class="chip" *ngFor="let tag of allTags; trackBy: trackByValue" [class.active]="activeTag === tag"
+        (click)="setActiveTag(tag)">
+        {{ tag }}
+      </button>
+    </div>
+  </div>
+</header>
+
+<p *ngIf="filteredProjects.length === 0" style="opacity:.8;margin:10px 0 18px;">
+  Keine Treffer. Passe die Suche oder Tags an.
+</p>
+
+<div class="grid">
+  <article class="card" *ngFor="let p of filteredProjects; trackBy: trackByName">
+    <h3 class="card-title">{{ p.name }}</h3>
+    <p class="card-desc">{{ p.shortDescription }}</p>
+
+    <div class="meta">
+      <div class="meta-group" *ngIf="p.tags?.length">
+        <h4>Tags</h4>
+        <ul class="pills">
+          <li class="pill" *ngFor="let t of p.tags; trackBy: trackByValue">{{ t }}</li>
+        </ul>
+      </div>
+
+      <div class="meta-group" *ngIf="p.techStack?.length">
+        <h4>Tech Stack</h4>
+        <ul class="pills">
+          <li class="pill" *ngFor="let t of p.techStack; trackBy: trackByValue">{{ t }}</li>
+        </ul>
       </div>
     </div>
-  </header>
 
-  <div class="grid">
-    <article class="card" *ngFor="let p of filteredProjects">
-      <h3 class="card-title">{{ p.name }}</h3>
-      <p class="card-desc">{{ p.shortDescription }}</p>
-
-      <div class="meta">
-        <div class="meta-group">
-          <h4>Tags</h4>
-          <ul class="pills">
-            <li class="pill" *ngFor="let t of p.tags">{{ t }}</li>
-          </ul>
-        </div>
-
-        <div class="meta-group">
-          <h4>Tech Stack</h4>
-          <ul class="pills">
-            <li class="pill" *ngFor="let t of p.techStack">{{ t }}</li>
-          </ul>
-        </div>
-      </div>
-
-      <details class="details">
-        <summary>Sachen, die ich gemacht habe</summary>
-        <ul class="list">
-          <li *ngFor="let c of p.contributions">{{ c }}</li>
-        </ul>
-      </details>
-    </article>
-  </div>
-</section>
+    <details class="details" *ngIf="p.contributions?.length">
+      <summary>Sachen, die ich gemacht habe</summary>
+      <ul class="list">
+        <li *ngFor="let c of p.contributions; trackBy: trackByValue">{{ c }}</li>
+      </ul>
+    </details>
+  </article>
+</div>

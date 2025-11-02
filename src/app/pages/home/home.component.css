@@ -1,152 +1,144 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 6rem 2rem;
-    background: linear-gradient(to bottom right, #0b0e18, #101528);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  background: transparent;
 }
 
 .hero-content {
-    max-width: 700px;
+  max-width: 700px;
 }
 
 .hero h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    color: #00c7e6;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #00c7e6;
 }
 
 .hero .tagline {
-    color: #cdd9f0;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    line-height: 1.6;
+  color: #cdd9f0;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  line-height: 1.6;
 }
 
 .hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background 0.25s, color 0.25s;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
 }
 
 .btn.primary {
-    background: #00c7e6;
-    color: #0b0e18;
+  background: #00c7e6;
+  color: #0b0e18;
 }
 
 .btn.primary:hover {
-    background: #00a8c0;
+  background: #00a8c0;
 }
 
 .btn.secondary {
-    border: 2px solid #00c7e6;
-    color: #00c7e6;
+  border: 2px solid #00c7e6;
+  color: #00c7e6;
 }
 
 .btn.secondary:hover {
-    background: #00c7e6;
-    color: #0b0e18;
+  background: #00c7e6;
+  color: #0b0e18;
 }
 
-/* === Projects Preview Section === */
 .projects-preview {
-    padding: 4rem 2rem;
-    text-align: center;
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
 .projects-preview h2 {
-    font-size: 2rem;
-    color: #00c7e6;
-    margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #00c7e6;
+  margin-bottom: 2rem;
 }
 
 /* GRID */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
 }
 
 /* === RETRO / WEBCORE WINDOW STYLE === */
 .project-card {
-    background: #0c0f1c;
-    border: 3px solid #c0c0c0;
-    /* klassischer heller Windows-Rahmen */
-    border-radius: 0;
-    /* eckig */
-    text-align: left;
-    padding: 1.5rem;
-    color: #e7f0ff;
-    font-family: var(--font-pixel);
-    letter-spacing: .3px;
-
-    /* Kein Shadow, stattdessen 3D-Rahmen via Inset */
-    box-shadow:
-        inset 1px 1px 0 #ffffff,
-        /* Lichtkante oben/links */
-        inset -1px -1px 0 #404040;
-    /* Schattenkante unten/rechts */
-    transition: transform 0.1s;
+  background: #0c0f1c;
+  border: 3px solid #c0c0c0;
+  border-radius: 0;
+  text-align: left;
+  padding: 1.5rem;
+  color: #e7f0ff;
+  font-family: var(--font-pixel);
+  letter-spacing: .3px;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040;
+  transition: transform 0.1s;
 }
 
 .project-card:hover {
-    transform: translateY(-2px);
-    box-shadow:
-        inset 1px 1px 0 #ffffff,
-        inset -1px -1px 0 #404040,
-        0 0 0 2px #00c7e6;
-    /* dezente Neon-Outline beim Hover */
+  transform: translateY(-2px);
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #404040,
+    0 0 0 2px #00c7e6;
 }
 
 .project-card h3 {
-    margin-bottom: 0.5rem;
-    color: #00c7e6;
-    font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #00c7e6;
+  font-size: 1.4rem;
 }
 
 .project-card p {
-    color: #bfc8de;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+  color: #bfc8de;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
 .project-card .link {
-    color: #00c7e6;
-    text-decoration: none;
-    border-bottom: 1px dotted #00c7e6;
+  color: #00c7e6;
+  text-decoration: none;
+  border-bottom: 1px dotted #00c7e6;
 }
 
 .project-card .link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 3rem;
-    }
+  .hero h1 {
+    font-size: 3rem;
+  }
 
-    .hero .tagline {
-        font-size: 1.4rem;
-    }
+  .hero .tagline {
+    font-size: 1.4rem;
+  }
 
-    .projects-preview {
-        padding: 3rem 1rem;
-    }
+  .projects-preview {
+    padding: 3rem 1rem;
+  }
 
-    .project-card {
-        padding: 1rem;
-    }
+  .project-card {
+    padding: 1rem;
+  }
 }

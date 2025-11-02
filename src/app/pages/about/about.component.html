@@ -25,26 +25,29 @@
     <article class="card">
       <h3>Skills</h3>
       <div class="tags">
+        <span class="tag">Java/Kotlin</span>
+        <span class="tag">iOS/Swift</span>
+        <span class="tag">Flutter</span>
+        <span class="tag">C/C++</span>
         <span class="tag">Angular</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">RxJS</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">CSS</span>
-        <span class="tag">Testing</span>
+        <span class="tag">Python</span>
+
       </div>
 
       <div class="skill-rows">
-        <div class="skill">
-          <span>Frontend Architecture</span>
-          <progress max="100" value="80" aria-label="Frontend Architecture level"></progress>
-        </div>
-        <div class="skill">
-          <span>Performance</span>
-          <progress max="100" value="75" aria-label="Performance level"></progress>
-        </div>
-        <div class="skill">
-          <span>Accessibility</span>
-          <progress max="100" value="70" aria-label="Accessibility level"></progress>
+        <div class="skill" *ngFor="let skill of skills; let i = index">
+          <!-- Visible label also serves accessibility -->
+          <span [attr.id]="'skill-label-' + i">{{ skill.name }}</span>
+
+          <!-- Accessible pixel bar -->
+          <div class="pixel-bar" role="progressbar" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"
+            [attr.aria-valuenow]="skill.level" [attr.aria-valuetext]="skill.level + '%'"
+            [attr.aria-labelledby]="'skill-label-' + i" [attr.title]="skill.name + ' ' + skill.level + '%'">
+
+            <div class="pixel-block" *ngFor="let _ of blockArray; let j = index"
+              [class.active]="j < getActiveBlocks(skill.level)">
+            </div>
+          </div>
         </div>
       </div>
     </article>

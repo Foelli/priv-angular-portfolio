@@ -16,7 +16,6 @@ type Project = {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
   standalone: true,
-  // ⬇️ Wichtig: CommonModule für *ngIf/*ngFor und FormsModule für [(ngModel)]
   imports: [CommonModule, FormsModule],
 })
 export class ProjectsComponent implements OnInit {
@@ -29,10 +28,11 @@ export class ProjectsComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    this.http;
     this.http
-      .get<{ projects: Project[] }>('assets/projectfiles/projects.json')
+      .get<{ projects: Project[] }>('assets/projects.json')
       .subscribe((data) => {
-        this.projects = data.projects || [];
+        this.projects = data?.projects ?? [];
         this.computeTags();
         this.applyFilters();
       });
@@ -64,7 +64,17 @@ export class ProjectsComponent implements OnInit {
         .join(' ')
         .toLowerCase();
       const matchesQuery = q ? hay.includes(q) : true;
-      return matchesTag && matchesQuery;
+      return !!matchesTag && matchesQuery;
     });
   }
+
+  private filterTimeout?: any;
+  onQueryChange(val: string) {
+    this.query = val;
+    clearTimeout(this.filterTimeout);
+    this.filterTimeout = setTimeout(() => this.applyFilters(), 120);
+  }
+
+  trackByName = (_: number, item: Project) => item.name;
+  trackByValue = (_: number, item: string) => item;
 }
