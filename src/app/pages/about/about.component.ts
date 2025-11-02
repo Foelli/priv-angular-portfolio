@@ -15,9 +15,9 @@ export class AboutComponent {
 
   // Dynamic skills (0–100)
   skills = [
-    { name: 'Frontend', level: 80 },
-    { name: 'Backend', level: 75 },
-    { name: 'Mobile', level: 70 },
+    { name: 'Frontend', level: 70 },
+    { name: 'Backend', level: 50 },
+    { name: 'Mobile', level: 80 },
   ];
 
   getActiveBlocks(level: number, total = this.totalBlocks): number {

@@ -63,9 +63,9 @@
 .projects-preview {
   padding: 4rem 2rem;
   text-align: center;
+  font-size: larger;
 }
 
-/* === Überschrift "Featured" wie About === */
 .projects-preview h2 {
   font-family: 'VT323', monospace;
   font-size: clamp(2.3rem, 3.8vw, 3.45rem);
@@ -97,6 +97,19 @@
     inset 1px 1px 0 #ffffff,
     inset -1px -1px 0 #404040;
   transition: transform 0.1s;
+  font-size: larger;
+}
+
+.github-logo {
+  width: 36px;
+  height: 36px;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+.github-logo:hover {
+  color: #e7f0ff;
+  /* Farbe beim Hover ändern */
 }
 
 .project-card:hover {

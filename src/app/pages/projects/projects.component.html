@@ -2,12 +2,12 @@
   <h1>Projects</h1>
 
   <div class="toolbar">
-    <input type="search" class="search" placeholder="Suche nach Name/Tag/Tech …" [(ngModel)]="query"
+    <input type="search" class="search" placeholder="Search by name, tag, or tech…" [(ngModel)]="query"
       (ngModelChange)="applyFilters()" />
 
     <div class="chip-row" *ngIf="allTags?.length">
       <button class="chip" [class.active]="activeTag === null" (click)="setActiveTag(null)">
-        Alle
+        All
       </button>
       <button class="chip" *ngFor="let tag of allTags; trackBy: trackByValue" [class.active]="activeTag === tag"
         (click)="setActiveTag(tag)">
@@ -18,7 +18,7 @@
 </header>
 
 <p *ngIf="filteredProjects.length === 0" style="opacity:.8;margin:10px 0 18px;">
-  Keine Treffer. Passe die Suche oder Tags an.
+  No results. Try adjusting your search or tags.
 </p>
 
 <div class="grid">
@@ -43,7 +43,7 @@
     </div>
 
     <details class="details" *ngIf="p.contributions?.length">
-      <summary>Sachen, die ich gemacht habe</summary>
+      <summary>Things I worked on</summary>
       <ul class="list">
         <li *ngFor="let c of p.contributions; trackBy: trackByValue">{{ c }}</li>
       </ul>

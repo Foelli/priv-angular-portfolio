@@ -3,20 +3,15 @@
   color: #e7f0ff;
   image-rendering: pixelated;
   font-size: 1.15rem;
-  /* +15 % Grundschrift */
   letter-spacing: 0.5px;
-  /* breiter für bessere Lesbarkeit */
 }
 
-/* Container */
 .about {
   max-width: 1100px;
   margin: 0 auto;
   padding: 4.6rem 1.5rem;
-  /* +15 % */
 }
 
-/* Header */
 .about-header {
   text-align: center;
   margin-bottom: 2.9rem;
@@ -25,11 +20,9 @@
 .about-header h2 {
   font-family: 'VT323', monospace;
   font-size: clamp(2.3rem, 3.8vw, 3.45rem);
-  /* +15 % */
   margin: 0;
   letter-spacing: 0.6px;
   color: #e7f0ff;
-  /* explizit, als Referenzstil */
 }
 
 .lead {
@@ -38,11 +31,9 @@
   opacity: 0.9;
   line-height: 1.55;
   font-size: 1.25rem;
-  /* +15 % */
   letter-spacing: 0.5px;
 }
 
-/* Grid */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -54,9 +45,12 @@
     grid-template-columns: 1fr 1fr;
     gap: 1.7rem;
   }
+
+  .about-grid .card:last-child {
+    grid-column: 1 / -1;
+  }
 }
 
-/* Card — match featured/project-card style */
 .card {
   background: #0c0f1c;
   border: 3px solid #c0c0c0;
@@ -82,11 +76,9 @@
 .card h3 {
   margin: 0 0 0.85rem;
   font-size: 1.6rem;
-  /* +15 % */
   letter-spacing: 0.6px;
 }
 
-/* Lists */
 .bullets {
   margin: 0.6rem 0 0;
   padding-left: 1.1rem;
@@ -98,7 +90,6 @@
   margin: 0.35rem 0;
 }
 
-/* Tags */
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -110,7 +101,6 @@
   display: inline-block;
   font-family: 'VT323', monospace;
   font-size: 1.1rem;
-  /* +15 % */
   padding: 0.35rem 0.8rem;
   border-radius: 0;
   border: 2px solid #c0c0c0;
@@ -133,7 +123,6 @@
   color: #00c7e6;
 }
 
-/* Pixel Skill Bars */
 .skill-rows {
   display: grid;
   gap: 0.7rem;
@@ -172,7 +161,6 @@
     0 0 0 1px rgba(0, 199, 230, 0.25) inset;
 }
 
-/* Timeline */
 .timeline {
   list-style: none;
   margin: 0.25rem 0 0;
@@ -207,7 +195,6 @@
   margin: 0.1rem 0 0.45rem;
 }
 
-/* Buttons */
 .btn {
   display: inline-block;
   font-family: 'VT323', monospace;
@@ -218,7 +205,6 @@
   text-decoration: none;
   transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease;
   font-size: 1.25rem;
-  /* +15 % */
 }
 
 .btn:hover {
