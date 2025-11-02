@@ -1,1 +1,88 @@
-<p>about works!</p>
+<section class="about">
+  <header class="about-header">
+    <h2>About Me</h2>
+    <p class="lead">
+      Kurzer Teaser-Text über dich. 1–2 Sätze, was dich ausmacht und was du baust.
+    </p>
+  </header>
+
+  <div class="about-grid">
+    <!-- Left: Bio / Intro -->
+    <article class="card">
+      <h3>Who I Am</h3>
+      <p>
+        Hier kommt deine Kurzbiografie rein: Werdegang, aktueller Fokus, Tech-Interessen.
+        Halte es konkret und knapp.
+      </p>
+      <ul class="bullets">
+        <li>Stärken / Fokusbereich</li>
+        <li>Lieblingsstack oder Arbeitsweise</li>
+        <li>Werte / Qualität, auf die du achtest</li>
+      </ul>
+    </article>
+
+    <!-- Right: Skills -->
+    <article class="card">
+      <h3>Skills</h3>
+      <div class="tags">
+        <span class="tag">Angular</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">RxJS</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">CSS</span>
+        <span class="tag">Testing</span>
+      </div>
+
+      <div class="skill-rows">
+        <div class="skill">
+          <span>Frontend Architecture</span>
+          <progress max="100" value="80" aria-label="Frontend Architecture level"></progress>
+        </div>
+        <div class="skill">
+          <span>Performance</span>
+          <progress max="100" value="75" aria-label="Performance level"></progress>
+        </div>
+        <div class="skill">
+          <span>Accessibility</span>
+          <progress max="100" value="70" aria-label="Accessibility level"></progress>
+        </div>
+      </div>
+    </article>
+
+    <!-- Left: Timeline / Experience -->
+    <article class="card">
+      <h3>Experience</h3>
+      <ol class="timeline">
+        <li>
+          <div class="dot" aria-hidden="true"></div>
+          <div class="time-content">
+            <strong>Project / Rolle</strong>
+            <span class="meta">2024 – heute · Tech/Stack</span>
+            <p>1–2 Sätze Ergebnis/Impact.</p>
+          </div>
+        </li>
+        <li>
+          <div class="dot" aria-hidden="true"></div>
+          <div class="time-content">
+            <strong>Project / Rolle</strong>
+            <span class="meta">2023 – 2024 · Tech/Stack</span>
+            <p>Kurze Beschreibung / Beitrag.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- Right: Values / Approach / CTA -->
+    <article class="card">
+      <h3>How I Work</h3>
+      <p>
+        Ein kurzer Abschnitt zu deinem Vorgehen: Kommunikation, Tests, CI/CD, Reviews, pragmatische Entscheidungen.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn primary" routerLink="/projects">View Projects</a>
+        <a class="btn ghost" rel="noopener" href="https://github.com/foelli" target="_blank">GitHub</a>
+      </div>
+    </article>
+  </div>
+</section>

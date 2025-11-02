@@ -1,7 +1,13 @@
 <app-header></app-header>
 
 <main class="content">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </main>
 
 <app-footer></app-footer>
+
+<button class="back-to-top" type="button" aria-label="Zurück nach oben" (click)="scrollToTop()">
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+    <path d="M12 4l-7 7h4v7h6v-7h4z"></path>
+  </svg>
+</button>

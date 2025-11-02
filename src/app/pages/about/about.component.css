@@ -1,0 +1,215 @@
+:host {
+  display: block;
+  color: #e7f0ff;
+  image-rendering: pixelated;
+}
+
+/* Container */
+.about {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem;
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.about-header h2 {
+  font-family: 'VT323', monospace;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.lead {
+  margin: 0.75rem auto 0;
+  max-width: 56ch;
+  opacity: 0.9;
+  line-height: 1.45;
+}
+
+/* Grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 820px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Card */
+.card {
+  background: rgba(11, 14, 24, 0.6);
+  /* #0b0e18 mit leichter Transparenz */
+  border: 1px solid rgba(231, 240, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.3px;
+}
+
+/* Lists */
+.bullets {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.bullets li {
+  margin: 0.3rem 0;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.tag {
+  display: inline-block;
+  font-family: 'VT323', monospace;
+  font-size: 0.95rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(231, 240, 255, 0.25);
+  background: rgba(14, 18, 32, 0.7);
+  white-space: nowrap;
+}
+
+/* Skills with progress */
+.skill-rows {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skill span {
+  opacity: 0.95;
+}
+
+progress {
+  width: 100%;
+  height: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(231, 240, 255, 0.1);
+  border: 1px solid rgba(231, 240, 255, 0.1);
+  border-radius: 999px;
+}
+
+progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+progress::-webkit-progress-value {
+  background: #00c7e6;
+  /* Akzent */
+  border-radius: 999px;
+}
+
+progress::-moz-progress-bar {
+  background: #00c7e6;
+  border-radius: 999px;
+}
+
+/* Timeline */
+.timeline {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  border-left: 1px dashed rgba(231, 240, 255, 0.18);
+}
+
+.timeline li {
+  position: relative;
+  margin: 0;
+  padding: 0.75rem 0 0.75rem 1rem;
+}
+
+.timeline .dot {
+  position: absolute;
+  left: -6px;
+  top: 1rem;
+  width: 10px;
+  height: 10px;
+  background: #00c7e6;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(0, 199, 230, 0.15);
+}
+
+.time-content .meta {
+  display: block;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin: 0.1rem 0 0.35rem;
+}
+
+.btn {
+  display: inline-block;
+  font-family: 'VT323', monospace;
+  letter-spacing: 0.3px;
+  padding: 0.55rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(231, 240, 255, 0.15);
+  text-decoration: none;
+  transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn.primary {
+  background: #00c7e6;
+  color: #0b0e18;
+  border-color: #00c7e6;
+  box-shadow: 0 10px 22px rgba(0, 199, 230, 0.22);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #e7f0ff;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+a {
+  color: #00c7e6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about',
-  imports: [],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+  styleUrls: ['./about.component.css'],
 })
-export class AboutComponent {
-
-}
+export class AboutComponent {}
