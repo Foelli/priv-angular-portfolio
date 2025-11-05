@@ -29,7 +29,6 @@
   height: 64px;
 }
 
-/* Entferne den Filter komplett */
 .back-to-top img {
   filter: none;
 }
